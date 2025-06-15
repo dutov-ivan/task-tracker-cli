@@ -36,7 +36,8 @@ func SaveTasks(tasks []models.Task) {
 		panic(err)
 	}
 
-	db := OpenDbOrCreateOne(os.O_WRONLY)
+	// We clear the previous contents to avoid not overwriting
+	db := OpenDbOrCreateOne(os.O_WRONLY | os.O_CREATE | os.O_TRUNC)
 	defer db.Close()
 
 	_, err = db.Write(contents)
@@ -60,14 +61,4 @@ func ReadAllTasks() []models.Task {
 	json.Unmarshal(contents, &tasks)
 
 	return tasks
-}
-
-func FindTaskById(id int, tasks []models.Task) *models.Task {
-	for i := range tasks {
-		if tasks[i].Id == id {
-			return &tasks[i]
-		}
-	}
-
-	return nil
 }

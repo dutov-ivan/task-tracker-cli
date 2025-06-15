@@ -7,6 +7,16 @@ import (
 	"github.com/dutov-ivan/task-tracker-cli/models"
 )
 
+func FindTaskById(id int, tasks []models.Task) *models.Task {
+	for i := range tasks {
+		if tasks[i].Id == id {
+			return &tasks[i]
+		}
+	}
+
+	return nil
+}
+
 func updateTaskField(id int, updateFn func(task *models.Task)) {
 	tasks := ReadAllTasks()
 	task := FindTaskById(id, tasks)
