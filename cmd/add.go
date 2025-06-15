@@ -19,6 +19,6 @@ var addTask = &cobra.Command{
 		task := models.NewTask(title)
 		db.AddTask(&task)
 
-		fmt.Printf("Task '%v' successfully created!", task.Title)
+		fmt.Printf("Task '%v' successfully created!", task.Description)
 	},
 }
