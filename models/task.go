@@ -9,8 +9,8 @@ type TaskStatus string
 
 const (
 	Todo       TaskStatus = "TODO"
-	InProgress TaskStatus = "In progress"
-	Done       TaskStatus = "Completed"
+	InProgress TaskStatus = "In Progress"
+	Done       TaskStatus = "Done"
 )
 
 type Task struct {

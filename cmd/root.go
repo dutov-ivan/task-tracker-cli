@@ -2,22 +2,21 @@ package cmd
 
 import (
 	"fmt"
-	"os"
+	"log"
 
 	"github.com/spf13/cobra"
 )
 
 var rootCmd = &cobra.Command{
 	Use:   "task-cli",
-	Short: "Task CLI is awesome CLI made by someone.",
+	Short: "Task CLI is a CLI-tool for basic task management.",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("You gotcha!")
+		fmt.Println("You got me! You can look for options under -h flag!")
 	},
 }
 
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
-		fmt.Println(err)
-		os.Exit(1)
+		log.Fatal(err)
 	}
 }

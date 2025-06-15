@@ -24,8 +24,9 @@ func PrintTasks(tasks []models.Task) {
 }
 
 var listTasks = &cobra.Command{
-	Use:  "list",
-	Args: cobra.ExactArgs(0),
+	Use:   "list",
+	Short: "Lists all tasks",
+	Args:  cobra.ExactArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
 		tasks := db.ReadAllTasks()
 		PrintTasks(tasks)
@@ -33,7 +34,9 @@ var listTasks = &cobra.Command{
 }
 
 var listTasksTodo = &cobra.Command{
-	Use: "todo",
+	Use:   "todo",
+	Short: "Lists tasks with status 'TODO'",
+	Args:  cobra.ExactArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
 		tasksTodo := db.ListTasksFilteredByStatus(models.Todo)
 		PrintTasks(tasksTodo)
@@ -41,7 +44,9 @@ var listTasksTodo = &cobra.Command{
 }
 
 var listTasksInProgress = &cobra.Command{
-	Use: "in-progress",
+	Use:   "in-progress",
+	Short: "Lists tasks with status 'In progress'",
+	Args:  cobra.ExactArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
 		tasksInProgress := db.ListTasksFilteredByStatus(models.InProgress)
 		PrintTasks(tasksInProgress)
@@ -49,7 +54,9 @@ var listTasksInProgress = &cobra.Command{
 }
 
 var listTasksDone = &cobra.Command{
-	Use: "done",
+	Use:   "done",
+	Short: "Lists tasks with status 'Done'",
+	Args:  cobra.ExactArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
 		tasksDone := db.ListTasksFilteredByStatus(models.Done)
 		PrintTasks(tasksDone)

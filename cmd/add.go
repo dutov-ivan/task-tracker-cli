@@ -13,7 +13,8 @@ func init() {
 }
 
 var addTask = &cobra.Command{
-	Use: "add <task>",
+	Use:   "add <description>",
+	Short: "Creates task with specified description",
 	Run: func(cmd *cobra.Command, args []string) {
 		title := args[0]
 		task := models.NewTask(title)

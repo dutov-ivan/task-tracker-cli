@@ -13,8 +13,9 @@ func init() {
 }
 
 var deleteTask = &cobra.Command{
-	Use:  "delete <id>",
-	Args: cobra.ExactArgs(1),
+	Use:   "delete <id>",
+	Short: "Deletes tasks with corresponding id",
+	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		id := processIdFromArgs(args)
 		task := db.DeleteTask(id)
