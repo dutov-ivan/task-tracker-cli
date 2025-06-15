@@ -9,14 +9,14 @@ func AddTask(newTask *models.Task) {
 
 	AssignNextHighestId(tasks, newTask)
 
-	*tasks = append(*tasks, *newTask)
+	tasks = append(tasks, *newTask)
 
 	SaveTasks(tasks)
 }
 
-func AssignNextHighestId(tasks *[]models.Task, newTask *models.Task) {
+func AssignNextHighestId(tasks []models.Task, newTask *models.Task) {
 	maxId := 0
-	for _, task := range *tasks {
+	for _, task := range tasks {
 		if task.Id > maxId {
 			maxId = task.Id
 		}

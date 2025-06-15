@@ -15,7 +15,7 @@ var listTasks = &cobra.Command{
 	Use: "list",
 	Run: func(cmd *cobra.Command, args []string) {
 		tasks := db.ReadAllTasks()
-		for _, task := range *tasks {
+		for _, task := range tasks {
 			task.Print()
 			fmt.Print("\n")
 		}
