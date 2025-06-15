@@ -1,6 +1,9 @@
 package models
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 type TaskStatus string
 
@@ -27,4 +30,12 @@ func NewTask(title string) Task {
 		UpdatedAt:   now,
 	}
 	return task
+}
+
+func (task *Task) Print() {
+	fmt.Printf("ID: %v\n", task.Id)
+	fmt.Printf("Description: %v\n", task.Description)
+	fmt.Printf("Status: %v\n", task.Status)
+	fmt.Printf("Created at: %v\n", task.CreatedAt.Local().Format("3:04PM, 02 Jan 2006"))
+	fmt.Printf("Updated at: %v\n", task.UpdatedAt.Local().Format("3:04PM, 02 Jan 2006"))
 }
